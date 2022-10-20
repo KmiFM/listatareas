@@ -4,12 +4,20 @@ import { Form,Button } from 'react-bootstrap';
 const FormularioTarea = () => {
     const [tarea, setTarea] = useState('');
     const [arregloTarea, setarregloTarea] = useState([]);
+
     const handleSubmit = (e)=>{
  e.preventDefault();
  //operador spread son tres puntitos que hace que se haga una copia del arreglo posterior a los tres puntitos y al final se agregaria la nueva tarea en el arreglo. Solo copia lo que está en el arreglo previo al cambio
  setarregloTarea([...arregloTarea,tarea]);
  setTarea('');
     }
+
+    const borrarTarea = (nombre)=>{
+ let arregloModificado = arregloTarea.filter((item)=>( item !== nombre))
+ //actualizo el state
+ setarregloTarea(arregloModificado)
+    }
+
     return (
         <>
         <div>
@@ -24,7 +32,7 @@ const FormularioTarea = () => {
       </Form.Group>
     </Form>
         
-        <ListaTarea arregloTarea={arregloTarea}></ListaTarea>
+        <ListaTarea arregloTarea={arregloTarea} borrarTarea={borrarTarea}></ListaTarea>
         </div>
         </>
     );
