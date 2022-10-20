@@ -1,9 +1,13 @@
 import ItemTarea from "./ItemTarea";
 import ListGroup from 'react-bootstrap/ListGroup';
-const ListaTarea = () => {
+//desestructuramos el objet props escribiendo {arrelgoTarea}
+const ListaTarea = ({arregloTarea}) => {
     return (
     <ListGroup>
-      <ItemTarea></ItemTarea>
+        {
+            arregloTarea.map((tarea,posicion)=> <ItemTarea key={posicion} nombreTarea={tarea}></ItemTarea>)
+        }
+     
     </ListGroup>
     );
 };
